@@ -19,3 +19,14 @@ while True:
      break
      
 print(result)
+
+'''
+내풀이
+n,m,k=map(int,input().split())
+array=list(map(int,input().split()))
+array.sort()
+mok = (m//(k+1))*(array[n-1]*k + array[n-2])
+namuji=m%(k+1)*array[n-2]
+result = mok +namuji
+print(result)
+'''
