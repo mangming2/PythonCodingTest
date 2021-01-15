@@ -1,20 +1,38 @@
-n=int(input())
+n,m = map(int,input().split())
+x,y,direction =  map(int,input().split())
+array=[]
 
-move = list(input().split())
+for i in range(n):
+  array.append(list(map(int,input().split())))
 
-move_types = ['L','R','U','D']
-x,y=1,1
-dx=[0,0,-1,+1]
-dy=[-1,+1,0,0]
+dx=[-1,0,1,0]
+dy=[0,1,0,-1]
+array[x][y]=1
+def turn():
+  global direction
+  direction+=1
+  if direction==4:
+    direction=0
+result=1
+turn_count=0
+while True:
+  turn()
+  
+  nx= x+dx[direction]
+  ny = y+dy[direction]
 
-for i in range(len(move)):
-  for j in range(len(move_types)):
-   if move[i] == move_types[j]:
-    x+=dx[j]
-    y+=dy[j]
-    if x>n or x<1 or y>n or y<1:
-      x-=dx[j]
-      y-=dy[j]
+  if array[nx][ny]==0:
+    array[nx][ny]=1
+    result+=1
+    x=nx
+    y=ny
+    turn_count=0
+    continue
+  else:
+    turn_count+=1
 
+  if turn_count==4:
+    break
 
-print(x,y)
+print(result)
+
