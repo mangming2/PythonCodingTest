@@ -22,7 +22,7 @@ def bfs(x,y):
       if graph[nx][ny]==0:
         continue
       if graph[nx][ny]==1:
-        graph[nx][ny]=graph[x][y]+1
+        graph[nx][ny]=graph[nx][ny]+1
         queue.append((nx,ny))
   
 bfs(0,0)
