@@ -1,29 +1,16 @@
-from collections import deque
-n,m = map(int, input().split())
-graph=[]
-for i in range(n):
-  graph.append(list(map(int,input())))
-
-dx=[-1,1,0,0]
-dy=[0,0,-1,1]
-
-def bfs(x,y):
-  queue =deque()
-  queue.append((x,y))
-  
-  while queue:
-    x,y = queue.popleft()
-    for i in range(4):
-      nx=x+dx[i]
-      ny=y+dy[i]
-
-      if nx<0 or ny<0 or nx>=n or ny>=m:
-        continue
-      if graph[nx][ny]==0:
-        continue
-      if graph[nx][ny]==1:
-        graph[nx][ny]=graph[x][y]+1
-        queue.append((nx,ny))
-  
-bfs(0,0)
-print(graph[n-1][m-1])
+s=input()
+def solution(s):
+    answer = ""
+    counter = 0
+    for i in range(len(s)):
+        if s[i] == " ":
+            counter = 0
+            answer += " "
+        elif counter % 2 == 0:
+            answer +=s[i].upper()
+            counter +=1
+        elif counter % 2 == 1:
+            answer += s[i].lower()   
+            counter +=1
+    return answer
+print(solution(s))
